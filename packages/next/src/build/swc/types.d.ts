@@ -1,28 +1,12 @@
 import type { NextConfigComplete } from '../../server/config-shared'
 import type { __ApiPreviewProps } from '../../server/api-utils'
 import type { ExternalObject, RefCell, TurboTasks } from './generated'
-import type { PageExtensions } from '../page-extensions-type'
 
 export interface Binding {
   isWasm: boolean
   turbo: {
     startTrace(options: any, turboTasks: ExternalObject<TurboTasks>): any
     createTurboTasks(memoryLimit?: number): ExternalObject<TurboTasks>
-    entrypoints: {
-      stream(
-        turboTasks: ExternalObject<TurboTasks>,
-        rootDir: string,
-        applicationDir: string,
-        pageExtensions: PageExtensions,
-        fn: (entrypoints: any) => void
-      ): any
-      get(
-        turboTasks: ExternalObject<TurboTasks>,
-        rootDir: string,
-        applicationDir: string,
-        pageExtensions: PageExtensions
-      ): any
-    }
     createProject(
       options: ProjectOptions,
       turboEngineOptions?: TurboEngineOptions
