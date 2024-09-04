@@ -4235,6 +4235,7 @@ dependencies = [
  "tracing-chrome",
  "tracing-subscriber",
  "turbo-tasks",
+ "turbo-tasks-backend",
  "turbo-tasks-build",
  "turbo-tasks-fs",
  "turbo-tasks-malloc",
