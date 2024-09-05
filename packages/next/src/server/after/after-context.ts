@@ -26,8 +26,7 @@ export class AfterContext {
     this.waitUntil = waitUntil
     this.onClose = onClose
 
-    this.callbackQueue = new PromiseQueue()
-    this.callbackQueue.pause()
+    this.callbackQueue = new PromiseQueue({ autoStart: false })
   }
 
   public run<T>(requestStore: RequestStore, callback: () => T): T {
@@ -105,8 +104,7 @@ export class AfterContext {
       wrapRequestStoreForAfterCallbacks(requestStore)
 
     return requestAsyncStorage.run(readonlyRequestStore, () => {
-      this.callbackQueue.start()
-      return this.callbackQueue.onIdle()
+      return this.callbackQueue.start().onIdle()
     })
   }
 }
