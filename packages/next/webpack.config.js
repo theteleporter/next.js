@@ -1,6 +1,6 @@
 const webpack = require('webpack')
 const path = require('path')
-const TerserPlugin = require('terser-webpack-plugin')
+// const TerserPlugin = require('terser-webpack-plugin')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
 const pagesExternals = [
@@ -159,24 +159,24 @@ module.exports = ({ dev, turbo, bundleType, experimental }) => {
       : 'source-map',
     optimization: {
       moduleIds: 'named',
-      minimize: true,
+      minimize: false,
       concatenateModules: true,
       minimizer: [
-        new TerserPlugin({
-          minify: TerserPlugin.swcMinify,
-          terserOptions: {
-            compress: {
-              dead_code: true,
-              // Zero means no limit.
-              passes: 0,
-            },
-            format: {
-              preamble: '',
-            },
-            mangle:
-              dev && !process.env.NEXT_SERVER_EVAL_SOURCE_MAPS ? false : true,
-          },
-        }),
+        // new TerserPlugin({
+        //   minify: TerserPlugin.swcMinify,
+        //   terserOptions: {
+        //     compress: {
+        //       dead_code: true,
+        //       // Zero means no limit.
+        //       passes: 0,
+        //     },
+        //     format: {
+        //       preamble: '',
+        //     },
+        //     mangle:
+        //       dev && !process.env.NEXT_SERVER_EVAL_SOURCE_MAPS ? false : true,
+        //   },
+        // }),
       ],
     },
     plugins: [

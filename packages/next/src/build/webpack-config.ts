@@ -2253,6 +2253,8 @@ export default async function getBaseWebpackConfig(
       webpackConfig.devtool = originalDevtool
       devtoolRevertWarning(originalDevtool)
     }
+    webpackConfig.devtool = 'source-map'
+    console.log(webpackConfig.devtool)
 
     // eslint-disable-next-line @typescript-eslint/no-shadow
     const webpack5Config = webpackConfig as webpack.Configuration

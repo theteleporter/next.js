@@ -43,6 +43,7 @@ export const base = curry(function base(
       config.devtool = false
     }
   }
+  config.devtool = 'source-map'
 
   if (!config.module) {
     config.module = { rules: [] }
