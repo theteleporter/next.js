@@ -12,6 +12,8 @@ import {
 } from 'next-test-utils'
 import webdriver from 'next-webdriver'
 
+const isReact18 = parseInt(process.env.NEXT_TEST_REACT_VERSION) === 18
+
 const appDir = join(__dirname, '../app')
 const indexPage = new File(join(appDir, 'pages/index.js'))
 
@@ -32,7 +34,7 @@ describe('Basics', () => {
       const browser = await webdriver(context.appPort, '/')
       expect(await browser.eval('window.didHydrate')).toBe(true)
       expect(await browser.elementById('react-dom-version').text()).toMatch(
-        /19/
+        isReact18 ? /18/ : /19/
       )
     })
 
